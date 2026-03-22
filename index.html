@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Eatheswar N - ASIC Design Engineer, VLSI Student, Creator of Silis EDA Platform">
 <meta name="keywords" content="VLSI, ASIC, RTL Design, GDS II, Verilog, Silis, EDA">
-<title>Portfolio | Eatheswar</title>
+<title>Eatheswar N | ASIC Design Engineer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
@@ -110,7 +110,7 @@ section{padding:110px 80px;position:relative}
 #home{min-height:100vh;display:flex;align-items:center;
   padding:var(--nav-h) 80px 0;overflow:hidden;position:relative;
   background:#fff}
-#particles-canvas{position:absolute;inset:0;z-index:0}
+#particles-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
 .hero-inner{display:flex;align-items:center;justify-content:space-between;
   gap:60px;width:100%;max-width:1100px;margin:0 auto;
   position:relative;z-index:1;padding:60px 0}
@@ -418,7 +418,7 @@ footer{background:var(--navy);padding:56px 80px 32px}
       <div class="hero-stats">
         <div class="stat"><div class="num">5+</div><div class="lbl">Projects</div></div>
         <div class="stat"><div class="num">5×</div><div class="lbl">Symposium Wins</div></div>
-        <div class="stat"><div class="num">7.96</div><div class="lbl">CGPA</div></div>
+        <div class="stat"><div class="num">7.9</div><div class="lbl">CGPA</div></div>
       </div>
     </div>
 
@@ -519,7 +519,7 @@ footer{background:var(--navy);padding:56px 80px 32px}
       <div class="itable">
         <div class="irow"><span class="ik">Age</span><span class="iv">19</span></div>
         <div class="irow"><span class="ik">Phone</span><span class="iv">+91 9363813334</span></div>
-        <div class="irow"><span class="ik">Email</span><span class="iv"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cca9adb8a4a9bfbbadbefefcfcfa8caba1ada5a0e2afa3a1">[email&#160;protected]</a></span></div>
+        <div class="irow"><span class="ik">Email</span><span class="iv">eatheswar2006@gmail.com</span></div>
         <div class="irow"><span class="ik">Place</span><span class="iv">Chennai, India</span></div>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
@@ -612,7 +612,7 @@ footer{background:var(--navy);padding:56px 80px 32px}
           <div class="edeg">B.E. Electronics Engineering (VLSI Design &amp; Technology)</div>
           <div class="eschool">R.M.K College of Engineering and Technology</div>
           <div class="eplace">Kavaraipettai, Chennai</div>
-          <div class="emeta"><span class="epill">2024 – 2028</span><span class="epill">2nd Year · In Progress</span><span class="epill g">CGPA: 7.96</span></div>
+          <div class="emeta"><span class="epill">2024 – 2028</span><span class="epill">2nd Year · In Progress</span><span class="epill g">CGPA: 7.9</span></div>
         </div>
       </div>
       <div class="ecard" data-aos="fade-up" data-aos-delay="150">
@@ -648,9 +648,10 @@ footer{background:var(--navy);padding:56px 80px 32px}
       <div class="cinfo" data-aos="fade-left" data-aos-delay="140">
         <h3>Contact Info</h3>
         <p class="csub">Thank you for visiting my portfolio.<br>Connect with me over socials.<br><br>Keep Rising 🚀</p>
-        <a href="/cdn-cgi/l/email-protection#335652475b56404452410103030573545e525a5f1d505c5e" class="ci">
+        <a href="mailto:eatheswar2006@gmail.com" class="ci">
           <div class="ciico">✉️</div>
-          <div><div class="cilbl">Email</div><div class="cival"><span class="__cf_email__" data-cfemail="bedbdfcad6dbcdc9dfcc8c8e8e88fed9d3dfd7d290ddd1d3">[email&#160;protected]</span></div></div>
+          <div><div class="cilbl">Email</div><div class="cival">eatheswar2006@gmail.com</div></div>
+        </a>
         </a>
         </a>
         <a href="tel:+919363813334" class="ci">
@@ -695,7 +696,7 @@ footer{background:var(--navy);padding:56px 80px 32px}
       <h4>Contact Info</h4>
       <div class="info-line">
         <span>📱 +91 9363813334</span>
-        <span>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5e3b3f2a363b2d293f2c6c6e6e681e39333f3732703d3133">[email&#160;protected]</a></span>
+        <span>✉️ eatheswar2006@gmail.com</span>
         <span>📍 Chennai, India</span>
       </div>
     </div>
@@ -721,64 +722,90 @@ footer{background:var(--navy);padding:56px 80px 32px}
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── Particle network (exactly like sabari.dev) ──
+<script>
+// ── Particle network — spider web like sabari.dev ──
 (function(){
   const canvas = document.getElementById('particles-canvas');
   const ctx = canvas.getContext('2d');
-  let W, H, pts = [];
+  const section = document.getElementById('home');
+  let W, H, pts = [], mouse = {x:-9999, y:-9999};
 
   function resize(){
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    W = canvas.width = section.clientWidth || window.innerWidth;
+    H = canvas.height = section.clientHeight || window.innerHeight;
   }
-  resize();
-  window.addEventListener('resize', resize);
 
-  // Create points
-  for(let i = 0; i < 90; i++){
-    pts.push({
-      x: Math.random() * 2000,
-      y: Math.random() * 1000,
-      vx: (Math.random() - .5) * .4,
-      vy: (Math.random() - .5) * .4,
-      r: Math.random() * 2 + 1
-    });
+  function makePts(){
+    pts = [];
+    for(let i = 0; i < 100; i++){
+      pts.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - .5) * .7,
+        vy: (Math.random() - .5) * .7,
+        r: Math.random() * 2.5 + 2
+      });
+    }
   }
 
   function draw(){
     ctx.clearRect(0, 0, W, H);
 
-    // Move & draw dots
+    // draw dots
     pts.forEach(p => {
       p.x += p.vx; p.y += p.vy;
       if(p.x < 0 || p.x > W) p.vx *= -1;
       if(p.y < 0 || p.y > H) p.vy *= -1;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(100,130,200,0.45)';
+      ctx.fillStyle = 'rgba(60,80,120,0.75)';
       ctx.fill();
     });
 
-    // Draw connecting lines
+    // draw lines between close points
     for(let i = 0; i < pts.length; i++){
       for(let j = i+1; j < pts.length; j++){
         const dx = pts[i].x - pts[j].x;
         const dy = pts[i].y - pts[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < 130){
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if(d < 150){
           ctx.beginPath();
           ctx.moveTo(pts[i].x, pts[i].y);
           ctx.lineTo(pts[j].x, pts[j].y);
-          ctx.strokeStyle = `rgba(100,130,200,${0.18*(1-dist/130)})`;
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = `rgba(60,80,120,${0.45*(1-d/150)})`;
+          ctx.lineWidth = 1.2;
           ctx.stroke();
         }
+      }
+      // lines to mouse
+      const mx = pts[i].x - mouse.x;
+      const my = pts[i].y - mouse.y;
+      const md = Math.sqrt(mx*mx + my*my);
+      if(md < 180){
+        ctx.beginPath();
+        ctx.moveTo(pts[i].x, pts[i].y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = `rgba(29,78,216,${0.55*(1-md/180)})`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
       }
     }
     requestAnimationFrame(draw);
   }
-  draw();
+
+  section.addEventListener('mousemove', function(e){
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  section.addEventListener('mouseleave', function(){
+    mouse.x = -9999; mouse.y = -9999;
+  });
+
+  window.addEventListener('resize', function(){ resize(); makePts(); });
+
+  window.addEventListener('load', function(){ resize(); makePts(); draw(); });
+  if(document.readyState === 'complete'){ resize(); makePts(); draw(); }
 })();
 
 // ── Typed.js ──
