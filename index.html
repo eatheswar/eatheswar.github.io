@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eatheswar N | ASIC Design Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;
+  --bg2:#f0f4ff;
+  --bg3:#e8eef8;
+  --card:#ffffff;
+  --border:#dde4f0;
+  --navy:#0a0e2a;
+  --blue:#2563eb;
+  --accent:#7c3aed;
+  --orange:#f97316;
+  --green:#059669;
+  --text:#0f172a;
+  --muted:#64748b;
+  --light:#94a3b8;
+  --ff:'Poppins',sans-serif;
+  --fm:'JetBrains Mono',monospace;
+  --nav-h:68px;
+  --r:12px;
+  --shadow:0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg:0 12px 48px rgba(0,0,0,0.12);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ff);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#f1f5f9}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:10px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 80px;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 20px rgba(0,0,0,0.06);
+}
+.logo{font-family:var(--ff);font-size:20px;font-weight:800;color:var(--navy);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;
+  padding:8px 14px;border-radius:8px;transition:.2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:rgba(37,99,235,0.08);font-weight:600}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.ham span{width:25px;height:2px;background:var(--navy);border-radius:3px;transition:.3s}
+.drawer{
+  display:none;position:fixed;top:var(--nav-h);left:0;right:0;z-index:999;
+  background:rgba(255,255,255,0.98);border-bottom:1px solid var(--border);
+  flex-direction:column;gap:2px;padding:14px 20px 20px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.1);
+}
+.drawer a{color:var(--muted);text-decoration:none;padding:12px 14px;font-size:15px;border-radius:8px;display:block}
+.drawer a:hover{color:var(--blue);background:rgba(37,99,235,0.06)}
+
+/* ── HERO ── */
+#home{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:var(--nav-h) 80px 0;
+  position:relative;overflow:hidden;
+  background:#fff;
+}
+#particles-canvas{position:absolute;inset:0;z-index:0}
+.hero-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:60px;width:100%;max-width:1100px;margin:0 auto;
+  position:relative;z-index:1;padding:60px 0;
+}
+.htxt{flex:1}
+.hhi{font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--navy);line-height:1.2}
+.hname{font-size:clamp(36px,5vw,64px);font-weight:800;color:var(--navy);line-height:1.1;margin-top:4px}
+.hname .accent{color:var(--accent)}
+.hinto{font-size:clamp(15px,2vw,20px);color:var(--muted);margin-top:12px;font-weight:500}
+.hinto .tw{color:var(--orange);font-weight:700}
+.hdesc{
+  max-width:500px;font-size:15px;color:var(--muted);
+  line-height:1.85;margin-top:18px;
+}
+.hdesc strong{color:var(--blue)}
+.hbtns{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;font-size:14px;font-weight:600;font-family:var(--ff);
+  border-radius:10px;text-decoration:none;border:none;cursor:pointer;transition:.25s;
+}
+.bp{background:linear-gradient(135deg,var(--blue),var(--accent));color:#fff;box-shadow:0 4px 16px rgba(37,99,235,0.3)}
+.bp:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,0.4)}
+.bo{background:transparent;color:var(--navy);border:2px solid var(--border)}
+.bo:hover{border-color:var(--blue);color:var(--blue)}
+.hsocials{display:flex;gap:12px;margin-top:28px}
+.hsoc{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:16px;
+  transition:.25s;
+}
+.hsoc:hover{background:var(--blue);transform:translateY(-3px)}
+.hsoc.li{background:#0077b5}
+.hsoc.gh{background:#333}
+.hsoc.em{background:var(--orange)}
+
+/* hero avatar */
+.hvisual{
+  flex-shrink:0;width:380px;height:380px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.avatar-circle{
+  width:320px;height:320px;border-radius:50%;
+  background:linear-gradient(135deg,#e8f0ff,#f0e8ff);
+  border:4px solid #fff;
+  box-shadow:0 20px 60px rgba(37,99,235,0.2);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+}
+/* IC chip SVG inside circle */
+.avatar-circle svg{width:260px;height:260px}
+
+/* ── SECTIONS ── */
+section{padding:100px 80px;position:relative}
+.si{max-width:1100px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:56px}
+.sec-head .icon{font-size:28px;margin-bottom:8px}
+.sec-head h2{font-size:clamp(26px,4vw,38px);font-weight:800;color:var(--navy)}
+.sec-head h2 span{color:var(--accent)}
+.sec-head p{font-size:14px;color:var(--muted);margin-top:8px}
+
+/* ── ABOUT ── */
+#about{background:var(--bg2)}
+.about-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:70px;align-items:center}
+.about-img{
+  background:linear-gradient(135deg,#e8f0ff,#f0e8ff);
+  border-radius:var(--r);aspect-ratio:4/5;
+  display:flex;align-items:center;justify-content:center;
+  font-size:110px;box-shadow:var(--shadow-lg);
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.about-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(37,99,235,0.08),transparent)}
+.about-right h3{font-size:26px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.about-role{color:var(--blue);font-size:14px;font-weight:600;margin-bottom:18px}
+.about-bio{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:24px}
+.about-bio strong{color:var(--blue)}
+.info-row{display:flex;flex-wrap:wrap;gap:6px 32px;margin-bottom:28px}
+.info-item{display:flex;align-items:center;gap:6px;font-size:14px}
+.info-item .ik{color:var(--muted);font-weight:500}
+.info-item .ik::after{content:' :'}
+.info-item .iv{color:var(--navy);font-weight:600}
+
+/* ── SKILLS ── */
+#skills{background:var(--accent)}
+#skills .sec-head h2{color:#fff}
+#skills .sec-head h2 span{color:var(--orange)}
+#skills .sec-head p{color:rgba(255,255,255,0.7)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px}
+.skill-item{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:var(--r);padding:20px 14px;
+  text-align:center;
+  transition:.25s;cursor:default;
+}
+.skill-item:hover{background:rgba(255,255,255,0.2);transform:translateY(-4px)}
+.skill-item .sico{font-size:28px;margin-bottom:10px;display:block}
+.skill-item .sname{font-size:13px;font-weight:600;color:#fff}
+.skill-item.hi{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.4)}
+
+/* ── PROJECTS ── */
+#projects{background:var(--navy)}
+#projects .sec-head h2{color:#fff}
+#projects .sec-head h2 span{color:var(--orange)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;margin-bottom:40px}
+.pcard{
+  position:relative;overflow:hidden;
+  aspect-ratio:16/10;
+  cursor:pointer;
+}
+.pcard-img{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#1a2235,#0f1525);
+  display:flex;align-items:center;justify-content:center;
+  font-size:60px;
+  transition:.4s;
+}
+.pcard:hover .pcard-img{transform:scale(1.05)}
+.pcard-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:var(--orange);color:#fff;
+  padding:14px 20px;
+  font-size:16px;font-weight:700;
+  transition:.3s;
+}
+.pcard:hover .pcard-label{background:var(--blue)}
+.pcard-overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,0.75);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;padding:24px;
+  opacity:0;transition:.3s;
+}
+.pcard:hover .pcard-overlay{opacity:1}
+.pcard-desc{font-size:13px;color:#fff;text-align:center;line-height:1.7;margin-bottom:8px}
+.pcard-techs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.ptag{font-family:var(--fm);font-size:10px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:3px 10px;border-radius:4px}
+.pcard-link{color:var(--orange);font-size:12px;font-weight:600;text-decoration:none;border:1px solid var(--orange);padding:6px 16px;border-radius:6px;margin-top:4px;transition:.2s}
+.pcard-link:hover{background:var(--orange);color:#fff}
+.pflag{
+  position:absolute;top:12px;left:12px;z-index:2;
+  background:var(--green);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:4px 10px;border-radius:4px;
+}
+.view-all-wrap{text-align:center}
+
+/* ── EDUCATION ── */
+#education{background:var(--bg2)}
+.edu-list{display:flex;flex-direction:column;gap:20px;max-width:800px;margin:0 auto}
+.ecard{
+  background:#fff;border-radius:var(--r);padding:28px 32px;
+  box-shadow:var(--shadow);border-left:4px solid var(--blue);
+  transition:.25s;
+}
+.ecard:hover{transform:translateX(6px);box-shadow:var(--shadow-lg)}
+.ecard h3{font-size:18px;font-weight:700;color:var(--blue);margin-bottom:4px}
+.ecard .eschool{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.ecard .eplace{font-size:13px;color:var(--muted);margin-bottom:12px}
+.ecard .emeta{font-family:var(--fm);font-size:13px;color:var(--green);font-weight:600}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg2)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:1000px;margin:0 auto}
+.cform-box{background:#fff;border-radius:var(--r);padding:36px;box-shadow:var(--shadow)}
+.cform-box h3{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.cform-box p{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.7}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.fg input,.fg textarea{
+  width:100%;background:#f8faff;
+  border:1.5px solid var(--border);border-radius:8px;
+  padding:12px 14px;font-size:14px;font-family:var(--ff);
+  color:var(--navy);outline:none;transition:.2s;resize:none;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--light)}
+.sbtn{
+  display:inline-flex;align-items:center;gap:8px;
+  width:100%;justify-content:center;
+  padding:14px;font-size:15px;font-weight:700;font-family:var(--ff);
+  background:linear-gradient(135deg,var(--blue),var(--accent));
+  color:#fff;border:none;border-radius:10px;cursor:pointer;transition:.25s;
+}
+.sbtn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,0.3)}
+/* contact info */
+.cinfo-box{display:flex;flex-direction:column;gap:16px}
+.cinfo-box h3{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.cinfo-box .csub{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:8px}
+.ci{
+  display:flex;align-items:center;gap:14px;
+  background:#fff;border:1px solid var(--border);border-radius:10px;
+  padding:14px 18px;text-decoration:none;color:inherit;
+  box-shadow:var(--shadow);transition:.22s;
+}
+.ci:hover{border-color:var(--blue);transform:translateX(5px);box-shadow:var(--shadow-lg)}
+.ciico{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,var(--blue),var(--accent));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.cilbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.cival{font-size:14px;color:var(--navy);font-weight:600}
+.socrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.soc{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:600;
+  background:var(--navy);color:#fff;
+  padding:9px 16px;border-radius:8px;text-decoration:none;
+  transition:.22s;
+}
+.soc:hover{background:var(--blue);transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--navy);
+  padding:40px 80px;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;
+  padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.f-brand .f-name{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px}
+.f-brand .f-name span{color:var(--accent)}
+.f-brand p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.8}
+.f-links h4{font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.f-links ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.f-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;transition:.2s}
+.f-links a:hover{color:var(--orange)}
+.f-contact h4{font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.f-contact p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.9}
+.f-contact a{color:rgba(255,255,255,0.5);text-decoration:none}
+.f-bottom{
+  max-width:1100px;margin:0 auto;
+  padding-top:24px;text-align:center;
+  font-size:13px;color:rgba(255,255,255,0.4);
+}
+.f-bottom span{color:var(--orange)}
+
+/* ── MOBILE ── */
+@media(max-width:960px){
+  nav,footer{padding-left:20px;padding-right:20px}
+  section{padding:80px 20px}
+  #home{padding:var(--nav-h) 20px 0}
+  .nav-links{display:none}.ham{display:flex}
+  .hero-inner{flex-direction:column-reverse;gap:32px;padding:40px 0 60px;text-align:center}
+  .hvisual{width:220px;height:220px}
+  .avatar-circle{width:200px;height:200px}
+  .avatar-circle svg{width:160px;height:160px}
+  .hsocials{justify-content:center}
+  .hbtns{justify-content:center}
+  .about-wrap{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="logo">Eatheswar <span>N</span></a>
+  <ul class="nav-links" id="nl">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="ham" id="ham" onclick="tD()"><span></span><span></span><span></span></div>
+</nav>
+<div class="drawer" id="dr">
+  <a href="#home" onclick="cD()">Home</a>
+  <a href="#about" onclick="cD()">About</a>
+  <a href="#skills" onclick="cD()">Skills</a>
+  <a href="#projects" onclick="cD()">Projects</a>
+  <a href="#education" onclick="cD()">Education</a>
+  <a href="#contact" onclick="cD()">Contact</a>
+</div>
+
+<!-- HOME -->
+<section id="home">
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="htxt">
+      <div class="hhi">Hi There,</div>
+      <div class="hname">I'm Eatheswar <span class="accent">N</span></div>
+      <div class="hinto">I Am Into <span class="tw" id="tw"></span><span style="color:var(--orange)">|</span></div>
+      <p class="hdesc">
+        2nd Year B.E. Electronics (VLSI Design & Technology) at R.M.K College of Engineering, Chennai.<br><br>
+        Creator of <strong>Silis</strong> — an open-source EDA platform that lets students run the full RTL-to-GDS II chip design flow without expensive commercial tools.
+      </p>
+      <div class="hbtns">
+        <a href="#about" class="btn bp">About Me ➤</a>
+      </div>
+      <div class="hsocials">
+        <a href="https://www.linkedin.com/in/eatheswar-n-b984b2368" target="_blank" class="hsoc li" title="LinkedIn">in</a>
+        <a href="https://github.com/eatheswar" target="_blank" class="hsoc gh" title="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+        </a>
+        <a href="mailto:eatheswar2006@gmail.com" class="hsoc em" title="Email">✉</a>
+      </div>
+    </div>
+    <!-- IC Chip in circle like sabari's bitmoji -->
+    <div class="hvisual">
+      <div class="avatar-circle">
+        <svg viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="gl"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <linearGradient id="cb" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#1e1b4b"/></linearGradient>
+          </defs>
+          <!-- PCB traces -->
+          <g stroke="#c7d2fe" stroke-width="1" opacity=".5">
+            <line x1="0" y1="68" x2="74" y2="68"/><line x1="186" y1="68" x2="260" y2="68"/>
+            <line x1="0" y1="98" x2="74" y2="98"/><line x1="186" y1="98" x2="260" y2="98"/>
+            <line x1="0" y1="128" x2="74" y2="128"/><line x1="186" y1="128" x2="260" y2="128"/>
+            <line x1="0" y1="158" x2="74" y2="158"/><line x1="186" y1="158" x2="260" y2="158"/>
+            <line x1="0" y1="192" x2="74" y2="192"/><line x1="186" y1="192" x2="260" y2="192"/>
+            <line x1="68" y1="0" x2="68" y2="74"/><line x1="68" y1="186" x2="68" y2="260"/>
+            <line x1="98" y1="0" x2="98" y2="74"/><line x1="98" y1="186" x2="98" y2="260"/>
+            <line x1="128" y1="0" x2="128" y2="74"/><line x1="128" y1="186" x2="128" y2="260"/>
+            <line x1="158" y1="0" x2="158" y2="74"/><line x1="158" y1="186" x2="158" y2="260"/>
+            <line x1="192" y1="0" x2="192" y2="74"/><line x1="192" y1="186" x2="192" y2="260"/>
+          </g>
+          <!-- Pins LEFT -->
+          <g filter="url(#gl)">
+            <rect x="22" y="63" width="52" height="10" rx="2" fill="#3b82f6"/>
+            <rect x="22" y="93" width="52" height="10" rx="2" fill="#3b82f6"/>
+            <rect x="22" y="123" width="52" height="10" rx="2" fill="#10b981"/>
+            <rect x="22" y="153" width="52" height="10" rx="2" fill="#3b82f6"/>
+            <rect x="22" y="187" width="52" height="10" rx="2" fill="#8b5cf6"/>
+          </g>
+          <!-- Pins RIGHT -->
+          <g filter="url(#gl)">
+            <rect x="186" y="63" width="52" height="10" rx="2" fill="#3b82f6"/>
+            <rect x="186" y="93" width="52" height="10" rx="2" fill="#10b981"/>
+            <rect x="186" y="123" width="52" height="10" rx="2" fill="#3b82f6"/>
+            <rect x="186" y="153" width="52" height="10" rx="2" fill="#8b5cf6"/>
+            <rect x="186" y="187" width="52" height="10" rx="2" fill="#3b82f6"/>
+          </g>
+          <!-- Pins TOP -->
+          <g filter="url(#gl)">
+            <rect x="63" y="22" width="10" height="52" rx="2" fill="#3b82f6"/>
+            <rect x="93" y="22" width="10" height="52" rx="2" fill="#8b5cf6"/>
+            <rect x="123" y="22" width="10" height="52" rx="2" fill="#3b82f6"/>
+            <rect x="153" y="22" width="10" height="52" rx="2" fill="#10b981"/>
+            <rect x="187" y="22" width="10" height="52" rx="2" fill="#3b82f6"/>
+          </g>
+          <!-- Pins BOTTOM -->
+          <g filter="url(#gl)">
+            <rect x="63" y="186" width="10" height="52" rx="2" fill="#10b981"/>
+            <rect x="93" y="186" width="10" height="52" rx="2" fill="#3b82f6"/>
+            <rect x="123" y="186" width="10" height="52" rx="2" fill="#3b82f6"/>
+            <rect x="153" y="186" width="10" height="52" rx="2" fill="#8b5cf6"/>
+            <rect x="187" y="186" width="10" height="52" rx="2" fill="#3b82f6"/>
+          </g>
+          <!-- Chip body -->
+          <rect x="74" y="74" width="112" height="112" rx="8" fill="url(#cb)" stroke="#3b82f6" stroke-width="1.5"/>
+          <rect x="83" y="83" width="94" height="94" rx="5" fill="none" stroke="#1e3a8a" stroke-width=".7"/>
+          <!-- Internal grid -->
+          <g stroke="#1e3a8a" stroke-width=".5" opacity=".8">
+            <line x1="98" y1="83" x2="98" y2="177"/>
+            <line x1="114" y1="83" x2="114" y2="177"/>
+            <line x1="130" y1="83" x2="130" y2="177"/>
+            <line x1="146" y1="83" x2="146" y2="177"/>
+            <line x1="162" y1="83" x2="162" y2="177"/>
+            <line x1="83" y1="98" x2="177" y2="98"/>
+            <line x1="83" y1="114" x2="177" y2="114"/>
+            <line x1="83" y1="130" x2="177" y2="130"/>
+            <line x1="83" y1="146" x2="177" y2="146"/>
+            <line x1="83" y1="162" x2="177" y2="162"/>
+          </g>
+          <!-- Functional blocks -->
+          <rect x="86" y="86" width="24" height="24" rx="2" fill="rgba(59,130,246,.25)" stroke="rgba(59,130,246,.6)" stroke-width="1"/>
+          <rect x="114" y="86" width="36" height="24" rx="2" fill="rgba(139,92,246,.2)" stroke="rgba(139,92,246,.5)" stroke-width="1"/>
+          <rect x="154" y="86" width="20" height="24" rx="2" fill="rgba(16,185,129,.2)" stroke="rgba(16,185,129,.5)" stroke-width="1"/>
+          <rect x="86" y="114" width="88" height="26" rx="2" fill="rgba(59,130,246,.3)" stroke="rgba(59,130,246,.7)" stroke-width="1"/>
+          <rect x="86" y="144" width="40" height="30" rx="2" fill="rgba(59,130,246,.15)" stroke="rgba(59,130,246,.4)" stroke-width="1"/>
+          <rect x="130" y="144" width="44" height="14" rx="2" fill="rgba(139,92,246,.15)" stroke="rgba(139,92,246,.4)" stroke-width="1"/>
+          <rect x="130" y="160" width="44" height="14" rx="2" fill="rgba(16,185,129,.12)" stroke="rgba(16,185,129,.35)" stroke-width="1"/>
+          <!-- Corner notch -->
+          <circle cx="80" cy="80" r="4" fill="#1e1b4b" stroke="#3b82f6" stroke-width="1"/>
+          <!-- Labels -->
+          <text x="98" y="102" fill="#93c5fd" font-size="5" font-family="JetBrains Mono" text-anchor="middle" opacity=".9">ALU</text>
+          <text x="132" y="102" fill="#c4b5fd" font-size="5" font-family="JetBrains Mono" text-anchor="middle" opacity=".9">CTRL</text>
+          <text x="164" y="102" fill="#6ee7b7" font-size="5" font-family="JetBrains Mono" text-anchor="middle" opacity=".9">MEM</text>
+          <text x="130" y="131" fill="#93c5fd" font-size="6" font-family="JetBrains Mono" text-anchor="middle" font-weight="700" opacity=".95">DATAPATH</text>
+          <text x="106" y="163" fill="#93c5fd" font-size="4.5" font-family="JetBrains Mono" text-anchor="middle" opacity=".8">UART</text>
+          <text x="152" y="153" fill="#c4b5fd" font-size="4.5" font-family="JetBrains Mono" text-anchor="middle" opacity=".8">REG</text>
+          <text x="152" y="169" fill="#6ee7b7" font-size="4.5" font-family="JetBrains Mono" text-anchor="middle" opacity=".8">CLK</text>
+          <!-- Corner pads -->
+          <circle cx="78" cy="78" r="2.5" fill="#3b82f6" opacity=".6"/>
+          <circle cx="182" cy="78" r="2.5" fill="#3b82f6" opacity=".6"/>
+          <circle cx="78" cy="182" r="2.5" fill="#3b82f6" opacity=".6"/>
+          <circle cx="182" cy="182" r="2.5" fill="#3b82f6" opacity=".6"/>
+          <!-- Pulse -->
+          <circle cx="130" cy="127" r="8" fill="none" stroke="#3b82f6" stroke-width="1">
+            <animate attributeName="r" values="8;22;8" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".6;0;.6" dur="3s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="si">
+    <div class="sec-head">
+      <div class="icon">👤</div>
+      <h2>About <span>Me</span></h2>
+    </div>
+    <div class="about-wrap">
+      <div class="about-img">🧑‍💻</div>
+      <div class="about-right">
+        <h3>I'm Eatheswar N</h3>
+        <div class="about-role">ASIC Design Engineer · VLSI Student</div>
+        <p class="about-bio">
+          I am a 2nd year B.E. Electronics Engineering student specialising in VLSI Design & Technology at R.M.K College of Engineering, Chennai. I am exploring the complete chip design pipeline — from writing synthesisable RTL in Verilog all the way to GDS II tapeout.<br><br>
+          I built <strong>Silis</strong> — an open-source EDA platform so that every student can access the full RTL-to-GDS II flow without paying for Cadence or Synopsys. I prefer to keep learning, continue challenging myself, and build things that actually matter.
+        </p>
+        <div class="info-row">
+          <div class="info-item"><span class="ik">Age</span><span class="iv">19</span></div>
+          <div class="info-item"><span class="ik">Email</span><span class="iv">eatheswar2006@gmail.com</span></div>
+          <div class="info-item"><span class="ik">Phone</span><span class="iv">+91 9363813334</span></div>
+          <div class="info-item"><span class="ik">Place</span><span class="iv">Chennai, India</span></div>
+        </div>
+        <a href="https://www.linkedin.com/in/eatheswar-n-b984b2368" target="_blank" class="btn bp" style="width:fit-content">LinkedIn ➤</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="si">
+    <div class="sec-head">
+      <div class="icon">💻</div>
+      <h2>Skills &amp; <span>Abilities</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item hi"><span class="sico">📐</span><span class="sname">Verilog</span></div>
+      <div class="skill-item hi"><span class="sico">⚙️</span><span class="sname">RTL Design</span></div>
+      <div class="skill-item hi"><span class="sico">🔬</span><span class="sname">Testbench</span></div>
+      <div class="skill-item hi"><span class="sico">⬡</span><span class="sname">Silis EDA</span></div>
+      <div class="skill-item"><span class="sico">🔁</span><span class="sname">Synthesis</span></div>
+      <div class="skill-item"><span class="sico">📍</span><span class="sname">Place &amp; Route</span></div>
+      <div class="skill-item hi"><span class="sico">🧩</span><span class="sname">GDS II</span></div>
+      <div class="skill-item"><span class="sico">🛠️</span><span class="sname">Cadence Xcelium</span></div>
+      <div class="skill-item"><span class="sico">⚡</span><span class="sname">Xilinx Vivado</span></div>
+      <div class="skill-item"><span class="sico">📡</span><span class="sname">FPGA</span></div>
+      <div class="skill-item"><span class="sico">📊</span><span class="sname">Waveform Analysis</span></div>
+      <div class="skill-item"><span class="sico">🔧</span><span class="sname">RISC-V</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="si">
+    <div class="sec-head">
+      <div class="icon" style="color:#fff">💾</div>
+      <h2>Projects <span>Made</span></h2>
+    </div>
+    <div class="proj-grid">
+
+      <div class="pcard">
+        <div class="pflag">★ Flagship</div>
+        <div class="pcard-img" style="background:linear-gradient(135deg,#1e3a8a,#312e81)">🧩</div>
+        <div class="pcard-overlay">
+          <p class="pcard-desc">Complete RTL-to-GDS II EDA tool built for students. Licensed open-source, adopted across multiple colleges.</p>
+          <div class="pcard-techs"><span class="ptag">EDA</span><span class="ptag">RTL→GDS II</span><span class="ptag">Open Source</span></div>
+          <a href="https://github.com/The-Silis-Foundation/silis" target="_blank" class="pcard-link">↗ GitHub</a>
+        </div>
+        <div class="pcard-label">Silis — EDA Platform</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-img" style="background:linear-gradient(135deg,#064e3b,#065f46)">🔧</div>
+        <div class="pcard-overlay">
+          <p class="pcard-desc">Basic RISC-V integer ISA processor in Verilog. Full testbench — fetch, decode, execute verified. RTL → GDS II tapeout.</p>
+          <div class="pcard-techs"><span class="ptag">Verilog</span><span class="ptag">RISC-V</span><span class="ptag">GDS II</span></div>
+        </div>
+        <div class="pcard-label">RISC-V Processor Core</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-img" style="background:linear-gradient(135deg,#4c1d95,#5b21b6)">🔢</div>
+        <div class="pcard-overlay">
+          <p class="pcard-desc">16-bit ALU supporting all arithmetic & logic ops. Self-written testbench, full GDS II layout via Silis.</p>
+          <div class="pcard-techs"><span class="ptag">Verilog</span><span class="ptag">ALU</span><span class="ptag">GDS II</span></div>
+        </div>
+        <div class="pcard-label">16-bit ALU</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-img" style="background:linear-gradient(135deg,#7c2d12,#9a3412)">📡</div>
+        <div class="pcard-overlay">
+          <p class="pcard-desc">Configurable baud-rate UART transceiver. Complete serial protocol verification. Full GDS II tapeout.</p>
+          <div class="pcard-techs"><span class="ptag">Verilog</span><span class="ptag">UART</span><span class="ptag">GDS II</span></div>
+        </div>
+        <div class="pcard-label">UART Module</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-img" style="background:linear-gradient(135deg,#1e40af,#1d4ed8)">⚡</div>
+        <div class="pcard-overlay">
+          <p class="pcard-desc">4-bit ALU synthesised and deployed on FPGA. Validated via bitstream generation and live board testing.</p>
+          <div class="pcard-techs"><span class="ptag">Verilog</span><span class="ptag">FPGA</span><span class="ptag">Vivado</span></div>
+        </div>
+        <div class="pcard-label">4-bit ALU — FPGA</div>
+      </div>
+
+    </div>
+    <div class="view-all-wrap">
+      <a href="https://github.com/eatheswar" target="_blank" class="btn bo" style="color:#fff;border-color:rgba(255,255,255,0.3)">View All →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="si">
+    <div class="sec-head">
+      <div class="icon">🎓</div>
+      <h2>My <span>Education</span></h2>
+    </div>
+    <div class="edu-list">
+      <div class="ecard">
+        <h3>B.E. Electronics Engineering (VLSI Design &amp; Technology)</h3>
+        <div class="eschool">R.M.K College of Engineering and Technology</div>
+        <div class="eplace">Kavaraipettai, Chennai</div>
+        <div class="emeta">2024 – 2028 | In Progress | CGPA: 8.1</div>
+      </div>
+      <div class="ecard" style="border-left-color:var(--accent)">
+        <h3 style="color:var(--accent)">HSE — Bio Maths</h3>
+        <div class="eschool">Kalashetra Matriculation Higher Secondary School</div>
+        <div class="eplace">Chennai, Tamil Nadu</div>
+        <div class="emeta">2022 – 2024 | Completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="si">
+    <div class="sec-head">
+      <div class="icon">🎧</div>
+      <h2>Get In <span>Touch</span></h2>
+    </div>
+    <div class="contact-wrap">
+      <div class="cform-box">
+        <h3>Send a Message</h3>
+        <p>Open to VLSI internships, research collaborations, and fresher roles. Drop a message!</p>
+        <div class="frow">
+          <div class="fg"><label>Name</label><input type="text" placeholder="Your name" id="fn"/></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" id="fe"/></div>
+        </div>
+        <div class="fg"><label>Phone</label><input type="tel" placeholder="Your phone number" id="fp"/></div>
+        <div class="fg"><label>Message</label><textarea rows="5" placeholder="Your message..." id="fm"></textarea></div>
+        <button class="sbtn" onclick="send()">Submit ✈</button>
+      </div>
+      <div class="cinfo-box">
+        <h3>Contact Info</h3>
+        <p class="csub">Thank you for visiting my portfolio. Connect with me over socials.<br><br>Keep Rising 🚀</p>
+        <a href="mailto:eatheswar2006@gmail.com" class="ci">
+          <div class="ciico">✉️</div>
+          <div><div class="cilbl">Email</div><div class="cival">eatheswar2006@gmail.com</div></div>
+        </a>
+        <a href="tel:+919363813334" class="ci">
+          <div class="ciico">📱</div>
+          <div><div class="cilbl">Phone</div><div class="cival">+91 9363813334</div></div>
+        </a>
+        <div class="ci">
+          <div class="ciico">📍</div>
+          <div><div class="cilbl">Location</div><div class="cival">Chennai, India</div></div>
+        </div>
+        <div class="socrow">
+          <a href="https://www.linkedin.com/in/eatheswar-n-b984b2368" target="_blank" class="soc">in LinkedIn</a>
+          <a href="https://github.com/eatheswar" target="_blank" class="soc">↗ GitHub</a>
+          <a href="https://github.com/The-Silis-Foundation/silis" target="_blank" class="soc">⬡ Silis</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="f-brand">
+      <div class="f-name">Eatheswar <span>N</span></div>
+      <p>Thank you for visiting my personal portfolio website. Connect with me over socials.<br><br>Keep Rising 🚀</p>
+    </div>
+    <div class="f-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">➤ Home</a></li>
+        <li><a href="#about">➤ About</a></li>
+        <li><a href="#skills">➤ Skills</a></li>
+        <li><a href="#projects">➤ Projects</a></li>
+        <li><a href="#education">➤ Education</a></li>
+        <li><a href="#contact">➤ Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-contact">
+      <h4>Contact Info</h4>
+      <p>
+        📱 +91 9363813334<br><br>
+        ✉️ <a href="mailto:eatheswar2006@gmail.com">eatheswar2006@gmail.com</a><br><br>
+        📍 Chennai, India
+      </p>
+    </div>
+  </div>
+  <div class="f-bottom">Designed With ❤️ By <span>Eatheswar N</span></div>
+</footer>
+
+<script>
+// Particles background
+(function(){
+  const canvas=document.getElementById('particles-canvas');
+  const ctx=canvas.getContext('2d');
+  let W,H,pts=[];
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight}
+  resize();
+  window.addEventListener('resize',resize);
+  for(let i=0;i<80;i++)pts.push({x:Math.random()*2000,y:Math.random()*900,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;
+      if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);
+      ctx.fillStyle='rgba(37,99,235,0.4)';ctx.fill();
+    });
+    pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{
+      const d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<120){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+        ctx.strokeStyle=`rgba(37,99,235,${.15*(1-d/120)})`;ctx.lineWidth=1;ctx.stroke();}
+    }));
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// Typewriter
+const words=['VLSI Design.','RTL Coding.','Silis EDA.','GDS II Tapeout.','FPGA Prototyping.'];
+let wi=0,ci=0,dl=false;
+const tw=document.getElementById('tw');
+function type(){
+  const w=words[wi];
+  tw.textContent=dl?w.slice(0,ci--):w.slice(0,ci++);
+  if(!dl&&ci===w.length+1){dl=true;setTimeout(type,1600);return}
+  if(dl&&ci<0){dl=false;wi=(wi+1)%words.length;ci=0}
+  setTimeout(type,dl?55:95);
+}
+type();
+
+// Nav active
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.boxShadow=scrollY>30?'0 2px 20px rgba(0,0,0,0.1)':'';
+  let c='';
+  document.querySelectorAll('section[id]').forEach(s=>{if(scrollY>=s.offsetTop-130)c=s.id});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c));
+});
+
+// Hamburger
+function tD(){const d=document.getElementById('dr');d.style.display=d.style.display==='flex'?'none':'flex'}
+function cD(){document.getElementById('dr').style.display='none'}
+
+// Contact → email
+function send(){
+  const n=document.getElementById('fn').value;
+  const e=document.getElementById('fe').value;
+  const p=document.getElementById('fp').value;
+  const m=document.getElementById('fm').value;
+  if(!n||!e||!m){alert('Please fill Name, Email and Message!');return}
+  window.location.href=`mailto:eatheswar2006@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(n)}&body=${encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nPhone: '+p+'\n\nMessage:\n'+m)}`;
+}
+</script>
+</body>
+</html>
